@@ -6,6 +6,7 @@ from api import views
 
 api_router = DefaultRouter()
 api_router.register(r'temp', views.TempViewSet, base_name = 'temp_view')
+api_router.register(r'simplereadwrite', views.SimpleReadWriteViewSet)
 
 urlpatterns = patterns('',
     # Examples:

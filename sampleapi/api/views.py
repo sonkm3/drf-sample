@@ -15,3 +15,13 @@ class TempViewSet(viewsets.ViewSet):
         return Response(data)
 
 
+# DBのモデルを読み書きするシンプルなAPI
+from rest_framework import filters
+from rest_framework import mixins
+from api.models import SimpleReadWrite
+from api.serializers import SimpleReadWriteSerializer
+
+class SimpleReadWriteViewSet(viewsets.ModelViewSet):
+    serializer_class = SimpleReadWriteSerializer
+    model = SimpleReadWrite
+
