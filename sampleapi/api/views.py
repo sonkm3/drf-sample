@@ -25,3 +25,17 @@ class SimpleReadWriteViewSet(viewsets.ModelViewSet):
     serializer_class = SimpleReadWriteSerializer
     model = SimpleReadWrite
 
+
+# ForeignKeyでのリレーション
+from api.models import Item, ImageStore
+from api.serializers import ItemSerializer, ImageStoreSerializer
+
+class ItemViewSet(viewsets.ModelViewSet):
+    serializer_class = ItemSerializer
+    model = Item
+
+
+class ImageStoreViewSet(viewsets.ModelViewSet):
+    serializer_class = ImageStoreSerializer
+    model = ImageStore
+
