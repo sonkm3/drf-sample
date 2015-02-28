@@ -18,7 +18,7 @@ class ImageStoreSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    image = serializers.PrimaryKeyRelatedField(many=False, required=False)
+    image = serializers.PrimaryKeyRelatedField(allow_null=True, queryset=ImageStore.objects.all())
     class Meta:
         model = Item
         fields = ('name', 'image')

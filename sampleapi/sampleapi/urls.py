@@ -8,9 +8,9 @@ from api import views
 
 api_router = DefaultRouter()
 api_router.register(r'temp', views.TempViewSet, base_name = 'temp_view')
-api_router.register(r'simplereadwrite', views.SimpleReadWriteViewSet)
-api_router.register(r'item', views.ItemViewSet)
-api_router.register(r'imagestore', views.ImageStoreViewSet)
+api_router.register(r'simplereadwrite', views.SimpleReadWriteViewSet, base_name = 'simple_read_write')
+api_router.register(r'item', views.ItemViewSet, base_name='item')
+api_router.register(r'imagestore', views.ImageStoreViewSet, base_name='imagestore')
 
 urlpatterns = patterns('',
     # Examples:

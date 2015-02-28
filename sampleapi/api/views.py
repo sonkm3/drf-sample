@@ -24,6 +24,7 @@ from api.serializers import SimpleReadWriteSerializer
 class SimpleReadWriteViewSet(viewsets.ModelViewSet):
     serializer_class = SimpleReadWriteSerializer
     model = SimpleReadWrite
+    queryset = SimpleReadWrite.objects.all()
 
 
 # ForeignKeyでのリレーション
@@ -33,9 +34,11 @@ from api.serializers import ItemSerializer, ImageStoreSerializer
 class ItemViewSet(viewsets.ModelViewSet):
     serializer_class = ItemSerializer
     model = Item
+    queryset = Item.objects.all()
 
 
 class ImageStoreViewSet(viewsets.ModelViewSet):
     serializer_class = ImageStoreSerializer
     model = ImageStore
+    queryset = ImageStore.objects.all()
 
