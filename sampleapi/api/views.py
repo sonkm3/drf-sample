@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
+# 静的にpythonのdictをjsonとして返すAPI
 from rest_framework.response import Response
 from rest_framework import viewsets
 
