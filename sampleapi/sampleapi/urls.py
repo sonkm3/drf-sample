@@ -24,8 +24,10 @@ urlpatterns = patterns('',
 
     url(r'^api/', include(api_router.urls)),
 
+    url(r'^admin/', include(admin.site.urls)),
+
     # ImageFieldのファイルの配信
     url(r'^(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT,}),
 
-    url(r'^admin/', include(admin.site.urls)),
+
 )
