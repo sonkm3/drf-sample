@@ -14,14 +14,16 @@ from api.models import Item, ImageStore
 class ImageStoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = ImageStore
-        fields = ('image',)
+        fields = ('id', 'image',)
+        read_only_fields = ('id',)
 
 
 class ItemSerializer(serializers.ModelSerializer):
     image = serializers.PrimaryKeyRelatedField(many=False, required=False)
     class Meta:
         model = Item
-        fields = ('name', 'image')
+        fields = ('id', 'name', 'image')
+        read_only_fields = ('id',)
         depth = 1
 
 
