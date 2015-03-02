@@ -43,5 +43,16 @@ admin.site.register(Item)
 
 
 
+class FieldSample(models.Model):
+    required_field = models.IntegerField()
+    required_field_with_default = models.IntegerField(default=1)
+    nullable_field = models.IntegerField(null=True, blank=True)
+    nullable_field_with_default = models.IntegerField(null=True, blank=True, default=1)
+
+    def __str__(self):
+        return self.pk
+
+admin.site.register(FieldSample)
+
 
 

@@ -26,3 +26,17 @@ class ItemSerializer(serializers.ModelSerializer):
 
 
 
+from api.models import FieldSample
+class FieldSampleFullSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FieldSample
+        fields = ('required_field', 'required_field_with_default', 'nullable_field', 'nullable_field_with_default')
+
+
+class FieldSampleMinimumSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FieldSample
+        fields = ('required_field',)
+
+
+

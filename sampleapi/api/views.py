@@ -39,3 +39,20 @@ class ImageStoreViewSet(viewsets.ModelViewSet):
     serializer_class = ImageStoreSerializer
     model = ImageStore
 
+
+# モデルのフィールドとシリアライザのフィールドの数が違う場合
+from api.models import FieldSample
+from api.serializers import FieldSampleFullSerializer, FieldSampleMinimumSerializer
+
+# defaultが設定されていてもnullableではないフィールドは入力が必須
+class FieldSampleFullViewSet(viewsets.ModelViewSet):
+    serializer_class = FieldSampleFullSerializer
+    model = FieldSample
+
+# シリアライザにnullableでないフィールドが含まれていない場合、そのフィールドはデフォルト値が設定される
+class FieldSampleMinimumViewSet(viewsets.ModelViewSet):
+    serializer_class = FieldSampleMinimumSerializer
+    model = FieldSample
+
+
+

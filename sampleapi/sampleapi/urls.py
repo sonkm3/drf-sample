@@ -12,6 +12,11 @@ api_router.register(r'simplereadwrite', views.SimpleReadWriteViewSet)
 api_router.register(r'item', views.ItemViewSet)
 api_router.register(r'imagestore', views.ImageStoreViewSet)
 
+api_router.register(r'fieldsamplefull', views.FieldSampleFullViewSet, base_name = 'fieldsamplefull')
+api_router.register(r'fieldsampleminimum', views.FieldSampleMinimumViewSet, base_name = 'fieldsampleminimum')
+
+
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'sampleapi.views.home', name='home'),
