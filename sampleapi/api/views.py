@@ -55,4 +55,20 @@ class FieldSampleMinimumViewSet(viewsets.ModelViewSet):
     model = FieldSample
 
 
+from api.serializers import NestedItemSerializer
+# ForeignKeyでのリレーション(mixin使う)
+class MixinedItemViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
+    serializer_class = ItemSerializer
+    model = Item
+
+    def list(self, request):
+        queryset = Item.objects.all()
+        serializer = NestedItemSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, pk=None):
+        queryset = Item.objects.get(pk=pk)
+        serializer = NestedItemSerializer(queryset)
+        return Response(serializer.data)
+
 

@@ -15,6 +15,8 @@ api_router.register(r'imagestore', views.ImageStoreViewSet)
 api_router.register(r'fieldsamplefull', views.FieldSampleFullViewSet, base_name = 'fieldsamplefull')
 api_router.register(r'fieldsampleminimum', views.FieldSampleMinimumViewSet, base_name = 'fieldsampleminimum')
 
+api_router.register(r'mixineditem', views.MixinedItemViewSet, base_name = 'mixeineditem')
+
 
 
 urlpatterns = patterns('',

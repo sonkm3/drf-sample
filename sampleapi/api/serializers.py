@@ -27,6 +27,12 @@ class ItemSerializer(serializers.ModelSerializer):
         depth = 1
 
 
+class NestedItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Item
+        read_only_fields = ('id', 'name', 'image')
+        depth = 1
+
 
 from api.models import FieldSample
 class FieldSampleFullSerializer(serializers.ModelSerializer):

@@ -75,4 +75,27 @@ class  SimpleReadWriteTestCase(APITestCase):
         self.assertEqual(stored_item['name'], fetched_item['name'])
 
 
+    def testMixinedItemViewSet(self):
+        # 登録(Image)
+        with open('images/DSC_2284.jpg', 'rb') as image:
+            obj = {'image': image}
+            response1 = self.client.post('/api/imagestore/', obj, format='multipart')
+        self.assertEqual(response1.status_code, 201)
+        stored_image = json.loads(str(response1.content.decode('ascii')))
+
+        # 登録(Item)
+        obj = {'name': 'aaa', 'image': stored_image['id']}
+        response2 = self.client.post('/api/mixineditem/', obj)
+        self.assertEqual(response2.status_code, 201)
+
+        # 取得
+        stored_item = json.loads(str(response2.content.decode('ascii')))
+        response3 = self.client.get('/api/mixineditem/%d/' % stored_item['id'])
+        self.assertEqual(response3.status_code, 200)
+
+        fetched_item = json.loads(str(response3.content.decode('ascii')))
+        self.assertEqual(stored_image['id'], fetched_item['image']['id'])
+        self.assertEqual(stored_item['id'], fetched_item['id'])
+        self.assertEqual(stored_item['name'], fetched_item['name'])
+
 
