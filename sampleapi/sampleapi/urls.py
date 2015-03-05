@@ -16,6 +16,7 @@ api_router.register(r'fieldsamplefull', views.FieldSampleFullViewSet, base_name 
 api_router.register(r'fieldsampleminimum', views.FieldSampleMinimumViewSet, base_name = 'fieldsampleminimum')
 
 api_router.register(r'mixineditem', views.MixinedItemViewSet, base_name = 'mixeineditem')
+api_router.register(r'modelviewsetitem', views.ModelViewSetItemViewSet, base_name = 'modelviewsetitem')
 
 
 

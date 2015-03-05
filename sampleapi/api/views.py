@@ -71,4 +71,24 @@ class MixinedItemViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.
         serializer = NestedItemSerializer(queryset)
         return Response(serializer.data)
 
+    # def update(self, request):
+    #     return super(MixinedItemViewSet, self).update()
+    # 
+    # def partial_update(self, request):
+    #     return super(MixinedItemViewSet, self).partial_update()
 
+# ForeignKeyでのリレーション(mixin使わない)
+# GETとPOST/PUT/DELETEでシリアライザーを使い分けることでGET時にはreadonly fieldでネストさせつつ、POST/PUT時にはリレーションのPK渡すことができる
+class ModelViewSetItemViewSet(viewsets.ModelViewSet):
+    serializer_class = ItemSerializer
+    model = Item
+
+    def list(self, request):
+        queryset = Item.objects.all()
+        serializer = NestedItemSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, pk=None):
+        queryset = Item.objects.get(pk=pk)
+        serializer = NestedItemSerializer(queryset)
+        return Response(serializer.data)
