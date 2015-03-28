@@ -17,6 +17,7 @@ api_router.register(r'fieldsampleminimum', views.FieldSampleMinimumViewSet, base
 
 api_router.register(r'mixineditem', views.MixinedItemViewSet, base_name = 'mixeineditem')
 api_router.register(r'modelviewsetitem', views.ModelViewSetItemViewSet, base_name = 'modelviewsetitem')
+api_router.register(r'itemserializerwithsource', views.ItemSerializerWithSourceViewSet, base_name = 'item_serializer_with_source')
 
 
 

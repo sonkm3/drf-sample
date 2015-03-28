@@ -46,5 +46,11 @@ class FieldSampleMinimumSerializer(serializers.ModelSerializer):
         model = FieldSample
         fields = ('required_field',)
 
+class ItemSerializerWithSource(serializers.ModelSerializer):
+    image = ImageStoreSerializer(source='image')
+    class Meta:
+        model = Item
+        fields = ('id', 'name', 'image')
+
 
 

@@ -92,3 +92,21 @@ class ModelViewSetItemViewSet(viewsets.ModelViewSet):
         queryset = Item.objects.get(pk=pk)
         serializer = NestedItemSerializer(queryset)
         return Response(serializer.data)
+
+
+from api.serializers import ItemSerializerWithSource
+# 他のモデルを参照しているフィールドを展開する際にシリアライザを指定して展開する
+# PrimaryKeyRelatedFieldで参照するよりも細かく指定できるが書き込みには使えない
+class ItemSerializerWithSourceViewSet(viewsets.ModelViewSet):
+    serializer_class = ItemSerializer
+    model = Item
+
+    def list(self, request):
+        queryset = Item.objects.all()
+        serializer = ItemSerializerWithSource(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, pk=None):
+        queryset = Item.objects.get(pk=pk)
+        serializer = ItemSerializerWithSource(queryset)
+        return Response(serializer.data)
