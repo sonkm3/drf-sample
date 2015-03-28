@@ -52,5 +52,14 @@ class ItemSerializerWithSource(serializers.ModelSerializer):
         model = Item
         fields = ('id', 'name', 'image')
 
+class SimpleReadWriteSerializerWithSerializerMethodField(serializers.ModelSerializer):
+    name_length = serializers.SerializerMethodField('name_length_method')
+    class Meta:
+        model = SimpleReadWrite
+        fields = ('id', 'name', 'name_length')
+
+    def name_length_method(self, obj):
+        return len(obj.name)
+
 
 

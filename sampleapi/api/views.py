@@ -110,3 +110,10 @@ class ItemSerializerWithSourceViewSet(viewsets.ModelViewSet):
         queryset = Item.objects.get(pk=pk)
         serializer = ItemSerializerWithSource(queryset)
         return Response(serializer.data)
+
+from api.serializers import SimpleReadWriteSerializerWithSerializerMethodField
+# SerializerMethodFieldを使ってモデルに無いフィールドを動的に生成する
+class SerializerMethodFieldViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    serializer_class = SimpleReadWriteSerializerWithSerializerMethodField
+    model = Item
+
